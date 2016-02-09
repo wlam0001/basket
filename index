@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- angular -->
+    <script type="text/javascript" src="js/angular.js"></script>
+
+    <!-- script -->
+    <script type="text/javascript" src="js/app.js"></script>
+
+    <!-- css -->
+    <link rel="stylesheet" href="css/bootstrap.css" />
+	 <meta charset="utf-8">
+</head>
+
+<body ng-app="myApp">
+    <h1>Players</h1>
+	
+    <div class="container" ng-controller="PlayerController as playerCtrl">
+	<button ng-click="t.clicked=!t.clicked" >Sort</button>
+
+	<label>Search: <input ng-model="searchText"></label>
+        <div  class="row" ng-repeat="player in playerCtrl.players| filter:searchText | orderBy:'first' ">
+		
+		
+			<div class = "name"><h3>{{player.first}} {{player.last}}</h3><div>
+		
+            <img class="col-sm-4" class="img-rounded" width="304" height="236" ng-src="{{player.images[0]}}" />
+            <div class="col-sm-4">
+                <p>First Name: {{player.first}}</p>
+				<p>Last Name: {{player.last}}</p>
+                <p>Position: {{player.position}}</p>
+                <p>Height: {{player.height.charAt(0)}}'{{player.height.substr(2)}}''</p>
+                <p>Year: {{player.year}}</p>
+            </div>
+			<div class="col-sm-4">
+                <p>Game Statistics</p>
+                <p>Games: {{player.games}}</p>
+                <p>Points Scored: {{player.points}}</p>
+                <p>Assists: {{player.assists}}</p>
+				<p>Blocks: {{player.blocks}}</p>
+            </div>
+			
+        </div>
+
+    </div>
+
+</body>
+
+</html>
